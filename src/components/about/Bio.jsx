@@ -18,7 +18,6 @@ const experience = [
     company: 'TOPIA OÜ · Contract',
     time: 'May 2023 - Jul 2023',
     location: 'Tallinn, Harjumaa, Estonia',
-    description: 'Working on the localization of the application.',
     skills: 'Jenkins · React.js · Git · TypeScript · Jira',
   },
   {
@@ -26,7 +25,6 @@ const experience = [
     company: 'Gamma Intelligence',
     time: 'Nov 2022 - Feb 2023',
     location: 'Tallinn, Harjumaa, Estonia',
-    description: 'Assisting in preparation for lectures.',
     skills: 'React.js · Git · JavaScript',
   },
 ];
@@ -137,7 +135,7 @@ export default function Bio() {
         </CodeAreaWrapper>
       </LeftBar>
       <RightBar>
-        <CodeAreaWrapper>
+        <CodeAreaTextWrapper>
           <CodeAreaBodyText>
             <div>
               1{'  '}
@@ -164,10 +162,10 @@ export default function Bio() {
                       value={value}
                       codeLine={codeLine}
                     />
-                    {index % 5 === 0 && index !== 0 ? (
+                    {index % 4 === 0 && index !== 0 ? (
                       <div>
                         {lineNumber++}
-                        {'  '}
+                        {lineNumber > 10 ? '\u00A0' : '\u00A0\u00A0'}
                         <Divider>- - - - - - - -</Divider>
                       </div>
                     ) : null}
@@ -176,11 +174,12 @@ export default function Bio() {
               });
             })}
             <div>
-              18{'  '}
+              16{'  '}
               <TextLine>{'*/'}</TextLine>
             </div>
+            <div>17</div>
           </CodeAreaBodyText>
-        </CodeAreaWrapper>
+        </CodeAreaTextWrapper>
       </RightBar>
     </Wrapper>
   );
@@ -197,18 +196,41 @@ const Wrapper = styled.div`
 const LeftBar = styled.div`
   height: 100%;
   flex: 3;
-  padding-right: 50px;
+  padding: 0 40px;
   border-right: 1px solid #1e2d3d;
+  @media (max-width: 1361px) {
+    padding: 0 10px 30px 10px;
+  }
   @media (max-width: 1252px) {
     border-bottom: 1px solid #1e2d3d;
     border-right: none;
-    padding: 0 10px 30px 0;
+    padding: 0 10px 30px 10px;
   }
 `;
 
 const RightBar = styled.div`
-  flex: 4;
-  padding: 0 15px 20px 0;
+  flex: 3;
+  padding: 0 30px 0 30px;
+  @media (max-width: 1417px) {
+    padding: 0 10px 30px 10px;
+  }
+  @media (max-width: 1252px) {
+    padding: 0 10px 60px 10px;
+  }
+`;
+
+const CodeAreaWrapper = styled.div`
+  margin: 40px 0 0 0px;
+  @media (max-width: 387px) {
+    margin: 40px 0 0 7px;
+  }
+`;
+const CodeAreaTextWrapper = styled.div`
+  margin: 20px 0 0 0;
+  height: 90%;
+  @media (max-width: 1252px) {
+    margin: 40px 0 0 0;
+  }
 `;
 
 const CodeAreaBody = styled.div`
@@ -230,16 +252,16 @@ const CodeAreaBody = styled.div`
 `;
 
 const CodeAreaBodyText = styled.div`
-  margin-top: 12px;
   border-radius: 15px;
   padding: 20px;
   border: 1px solid #1e2d3d;
   background: #011221;
-  max-width: 620px;
-  flex-direction: column;
+  height: 100%;
+  font-size: 18px;
   gap: 6px;
   @media (max-width: 1252px) {
     max-width: inherit;
+    font-size: 16px;
   }
   @media (max-width: 557px) {
     font-size: 14px;
@@ -253,13 +275,6 @@ const CodeAreaHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-`;
-
-const CodeAreaWrapper = styled.div`
-  margin: 40px 0 0 20px;
-  @media (max-width: 387px) {
-    margin: 40px 0 0 7px;
-  }
 `;
 
 const WhoName = styled.div`
