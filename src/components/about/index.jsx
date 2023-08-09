@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiFillFolderOpen } from 'react-icons/ai';
 import { RxCross2 } from 'react-icons/rx';
 
@@ -25,7 +25,9 @@ const tabs = [
 ];
 
 export default function AboutPage() {
-  const [showTab, setShowTab] = useState(['bio']);
+  const [showTab, setShowTab] = useState(
+    JSON.parse(localStorage.getItem('item')) || [],
+  );
   const [activeTab, setActiveTab] = useState('bio');
 
   const matches = useMediaQuery('(min-width: 440px)');
@@ -38,6 +40,10 @@ export default function AboutPage() {
       return;
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('item', JSON.stringify(showTab));
+  }, [showTab]);
 
   const removeTab = (name) => {
     const updatedTabs = showTab.filter((tab) => tab !== name);
