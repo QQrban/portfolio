@@ -25,10 +25,26 @@ const tabs = [
 ];
 
 export default function AboutPage() {
-  const [showTab, setShowTab] = useState(
-    JSON.parse(localStorage.getItem('item')) || [],
-  );
-  const [activeTab, setActiveTab] = useState('bio');
+  const [showTab, setShowTab] = useState(() => {
+    const storedTabs = JSON.parse(localStorage.getItem('show'));
+    return storedTabs && storedTabs.length > 0 ? storedTabs : ['bio'];
+  });
+  const [activeTab, setActiveTab] = useState(() => {
+    const storedActiveTab = JSON.parse(localStorage.getItem('active'));
+    const storedTabs = JSON.parse(localStorage.getItem('show'));
+
+    if (storedActiveTab && storedTabs) {
+      if (storedTabs.includes(storedActiveTab)) {
+        return storedActiveTab;
+      } else {
+        const newActiveTab = storedTabs[storedTabs.length - 1] || '';
+        localStorage.setItem('active', JSON.stringify(newActiveTab));
+        return newActiveTab;
+      }
+    }
+
+    return 'bio';
+  });
 
   const matches = useMediaQuery('(min-width: 440px)');
 
@@ -42,14 +58,19 @@ export default function AboutPage() {
   };
 
   useEffect(() => {
-    localStorage.setItem('item', JSON.stringify(showTab));
-  }, [showTab]);
+    localStorage.setItem('show', JSON.stringify(showTab));
+    localStorage.setItem('active', JSON.stringify(activeTab));
+  }, [showTab, activeTab]);
 
   const removeTab = (name) => {
     const updatedTabs = showTab.filter((tab) => tab !== name);
     const newActiveTab = updatedTabs[updatedTabs.length - 1] || '';
     setActiveTab(newActiveTab);
     setShowTab(updatedTabs);
+  };
+
+  const chooseActiveTab = (name) => {
+    setActiveTab(name);
   };
 
   return (
@@ -70,7 +91,7 @@ export default function AboutPage() {
         <Header>
           {showTab.map((name) => (
             <Tab
-              onClick={() => setActiveTab(name)}
+              onClick={() => chooseActiveTab(name)}
               className={name === activeTab ? 'active' : ''}
               key={name}
             >
