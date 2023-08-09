@@ -1,33 +1,17 @@
 import { styled } from 'styled-components';
 
-import kurban from '../../assets/kurban.jpg';
-import useMediaQuery from '../../shared/hooks/useMediaQuery';
+import kurban from '../../../assets/kurban.jpg';
+import useMediaQuery from '../../../shared/hooks/useMediaQuery';
+import { experience, technologies } from '../constants';
+import {
+  GreenString,
+  OrangeString,
+  PurpleString,
+  WhiteString,
+  YellowString,
+} from '../shared/colors';
 import Technology from './Technology';
 import WorkExperience from './WorkExperience';
-
-const technologies = [
-  { name: 'React', level: 'Advanced', line: '2' },
-  { name: 'JavaScript', level: 'Advanced', line: '3' },
-  { name: 'HTML', level: 'Expert', line: '4' },
-  { name: 'CSS', level: 'Expert', line: '5' },
-];
-
-const experience = [
-  {
-    role: 'Junior Software Engineer',
-    company: 'TOPIA OÜ · Contract',
-    time: 'May 2023 - Jul 2023',
-    location: 'Tallinn, Harjumaa, Estonia',
-    skills: 'Jenkins · React.js · Git · TypeScript · Jira',
-  },
-  {
-    role: 'Frontend Internship',
-    company: 'Gamma Intelligence',
-    time: 'Nov 2022 - Feb 2023',
-    location: 'Tallinn, Harjumaa, Estonia',
-    skills: 'React.js · Git · JavaScript',
-  },
-];
 
 export default function Bio() {
   const matchesArray = useMediaQuery('(min-width: 550px)');
@@ -51,52 +35,52 @@ export default function Bio() {
           </CodeAreaHeader>
           <CodeAreaBody>
             <div>
-              1 <ConstText>const </ConstText>
-              <ConstName>personalInfos = </ConstName>
-              <CurlyBrackets>{'{'}</CurlyBrackets>
+              1 <PurpleString>const </PurpleString>
+              <WhiteString>personalInfos = </WhiteString>
+              <YellowString>{'{'}</YellowString>
             </div>
             <div>
-              2{'  '} <KeyName>firstName: </KeyName>
-              <ValueString>'Kurban',</ValueString>
+              2{'  '} <WhiteString>firstName: </WhiteString>
+              <GreenString>'Kurban',</GreenString>
             </div>
             <div>
-              3{'  '} <KeyName>lastName: </KeyName>
-              <ValueString>'Ramazanov',</ValueString>
+              3{'  '} <WhiteString>lastName: </WhiteString>
+              <GreenString>'Ramazanov',</GreenString>
             </div>
             <div>
-              4{'  '} <KeyName>age: </KeyName>
-              <ValueNumber>30,</ValueNumber>
+              4{'  '} <WhiteString>age: </WhiteString>
+              <OrangeString>30,</OrangeString>
             </div>
             <div>
-              5{'  '} <KeyName>phone: </KeyName>
-              <ValueString>'+37258444846',</ValueString>
+              5{'  '} <WhiteString>phone: </WhiteString>
+              <GreenString>'+37258444846',</GreenString>
             </div>
             <div>
-              6{'  '} <KeyName>email: </KeyName>
-              <ValueString>
+              6{'  '} <WhiteString>email: </WhiteString>
+              <GreenString>
                 {matchesEmail
                   ? 'kurban.ramazanovv@gmail.com,'
                   : `${'\n   '} 'kurban.ramazanovv@gmail.com'`}
-              </ValueString>
+              </GreenString>
             </div>
             <div>
-              7{'  '} <KeyName>location: </KeyName>
-              <ValueString>'Estonia, Tallinn',</ValueString>
+              7{'  '} <WhiteString>location: </WhiteString>
+              <GreenString>'Estonia, Tallinn',</GreenString>
             </div>
             <div>
-              8{'  '} <KeyName>languages: </KeyName>
-              <ValueString>
-                <Brackets>{'['}</Brackets>
-                <ValueString>
+              8{'  '} <WhiteString>languages: </WhiteString>
+              <GreenString>
+                <PurpleString>{'['}</PurpleString>
+                <GreenString>
                   'Estonian', 'English',{' '}
                   {matchesArray ? 'Russian' : `${'\n   '} Russian`}
-                </ValueString>
-                <Brackets>{']'}</Brackets>,
-              </ValueString>
+                </GreenString>
+                <PurpleString>{']'}</PurpleString>,
+              </GreenString>
             </div>
             <div>
-              9 <CurlyBrackets>{'}'}</CurlyBrackets>
-              <Semicolon>;</Semicolon>
+              9 <YellowString>{'}'}</YellowString>
+              <WhiteString>;</WhiteString>
             </div>
           </CodeAreaBody>
         </CodeAreaWrapper>
@@ -114,9 +98,9 @@ export default function Bio() {
           </CodeAreaHeader>
           <CodeAreaBody>
             <div>
-              1 <ConstText>const </ConstText>
-              <ConstName>technologies = </ConstName>
-              <Brackets>{'['}</Brackets>
+              1 <PurpleString>const </PurpleString>
+              <WhiteString>technologies = </WhiteString>
+              <PurpleString>{'['}</PurpleString>
             </div>
             {technologies.map((technology) => (
               <div key={technology.name}>
@@ -128,8 +112,8 @@ export default function Bio() {
               </div>
             ))}
             <div>
-              6 <Brackets>{']'}</Brackets>
-              <Semicolon>;</Semicolon>
+              6 <PurpleString>{']'}</PurpleString>
+              <WhiteString>;</WhiteString>
             </div>
           </CodeAreaBody>
         </CodeAreaWrapper>
@@ -146,7 +130,7 @@ export default function Bio() {
             </div>
             <div>
               2{'  '}
-              <CommentTitle>&nbsp;* * WORK EXPERIENCE: </CommentTitle>
+              <GreenString>&nbsp;* * WORK EXPERIENCE: </GreenString>
             </div>
             <div>
               3{'  '}
@@ -287,42 +271,6 @@ const WhoDate = styled.div`
   color: #607b96;
   font-size: 12px;
   font-weight: 500;
-`;
-
-const ConstText = styled.span`
-  color: #c594c5;
-`;
-
-const ConstName = styled.span`
-  color: white;
-`;
-
-const CurlyBrackets = styled.span`
-  color: #fac863;
-`;
-
-const Brackets = styled.span`
-  color: #c594c5;
-`;
-
-const KeyName = styled.span`
-  color: white;
-`;
-
-const ValueString = styled.span`
-  color: #99c794;
-`;
-
-const ValueNumber = styled.span`
-  color: #f99157;
-`;
-
-const Semicolon = styled.span`
-  color: white;
-`;
-
-const CommentTitle = styled.span`
-  color: #99c794;
 `;
 
 const TextLine = styled.span`

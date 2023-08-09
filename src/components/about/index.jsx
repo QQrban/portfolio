@@ -5,9 +5,9 @@ import { AiFillFolderOpen } from 'react-icons/ai';
 import { RxCross2 } from 'react-icons/rx';
 
 import useMediaQuery from '../../shared/hooks/useMediaQuery';
-import Bio from './Bio';
-import Education from './Education';
-import Recommendations from './Recommendations';
+import Bio from './bio/Bio';
+import Education from './education/Education';
+import Recommendations from './recommendations/Recommendations';
 
 const tabs = [
   {
@@ -27,7 +27,9 @@ const tabs = [
 export default function AboutPage() {
   const [showTab, setShowTab] = useState(['bio']);
   const [activeTab, setActiveTab] = useState('bio');
-  const matches = useMediaQuery('(min-width: 346px)');
+
+  const matches = useMediaQuery('(min-width: 440px)');
+
   const chooseTab = (name) => {
     setActiveTab(name);
     if (!showTab.includes(name)) {

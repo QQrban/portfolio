@@ -1,7 +1,16 @@
 import { styled } from 'styled-components';
 
-import useMediaQuery from '../../shared/hooks/useMediaQuery';
-import { schools } from './constants';
+import useMediaQuery from '../../../shared/hooks/useMediaQuery';
+import { schools } from '../constants';
+import {
+  BlueString,
+  GreenString,
+  OrangeString,
+  PurpleString,
+  TealString,
+  WhiteString,
+  YellowString,
+} from '../shared/colors';
 
 export default function Education() {
   const matchesAlt = useMediaQuery('(min-width: 395px)');
@@ -129,7 +138,7 @@ export default function Education() {
               <TealString>{'>'}</TealString>
             </TextLine>
             <TextLine>
-              <span style={{ paddingRight: '60px' }}>12</span>
+              <span style={{ paddingRight: '65px' }}>12</span>
               <TealString>{'<'}</TealString>
               <Tag>div</Tag>
               <TealString>{'>'}</TealString>
@@ -141,7 +150,7 @@ export default function Education() {
               <TealString>{'>'}</TealString>
             </TextLine>
             <TextLine>
-              <span style={{ paddingRight: '60px' }}>13</span>
+              <span style={{ paddingRight: '65px' }}>13</span>
               <TealString>{'<'}</TealString>
               <Tag>div</Tag>
               <TealString>{'>'}</TealString>
@@ -153,7 +162,7 @@ export default function Education() {
               <TealString>{'>'}</TealString>
             </TextLine>
             <TextLine>
-              <span style={{ paddingRight: '60px' }}>14</span>
+              <span style={{ paddingRight: '65px' }}>14</span>
               <TealString>{'<'}</TealString>
               <Tag>div</Tag>
               <TealString>{'>'}</TealString>
@@ -165,7 +174,7 @@ export default function Education() {
               <TealString>{'>'}</TealString>
             </TextLine>
             <TextLine>
-              <span style={{ paddingRight: '60px' }}>15</span>
+              <span style={{ paddingRight: '65px' }}>15</span>
               <TealString>{'<'}</TealString>
               <Tag>div</Tag>
               <TealString>{'>'}</TealString>
@@ -177,7 +186,7 @@ export default function Education() {
               <TealString>{'>'}</TealString>
             </TextLine>
             <TextLine>
-              <span style={{ paddingRight: '50px' }}>16</span>
+              <span style={{ paddingRight: '52px' }}>16</span>
               <TealString>{'</'}</TealString>
               <Tag>div</Tag>
               <TealString>{'>'}</TealString>
@@ -317,32 +326,4 @@ const EducationInfo = styled.div`
 
 const Tag = styled.span`
   color: #ec5f67;
-`;
-
-const TealString = styled.span`
-  color: #5fb3b3;
-`;
-
-const PurpleString = styled.span`
-  color: #c594c5;
-`;
-
-const BlueString = styled.span`
-  color: #6699cc;
-`;
-
-const WhiteString = styled.span`
-  color: white;
-`;
-
-const YellowString = styled.span`
-  color: #fac863;
-`;
-
-const OrangeString = styled.span`
-  color: #f99157;
-`;
-
-const GreenString = styled.span`
-  color: #99c794;
 `;
