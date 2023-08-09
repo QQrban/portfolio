@@ -1,10 +1,13 @@
-import './App.css';
 import { styled } from 'styled-components';
+
+import { Route, Routes } from 'react-router-dom';
+
+import './App.css';
+import AboutPage from './components/about';
 import Footer from './components/footer';
 import Header from './components/header';
 import HomePage from './components/home';
-import { Routes, Route } from 'react-router-dom';
-import AboutPage from './components/about';
+import Projects from './components/projects';
 
 export default function App() {
   return (
@@ -12,10 +15,9 @@ export default function App() {
       <Header />
       <Content>
         <Routes>
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          {/* <Route path="/elektrikell/low/:hour" element={<Elektrikell />} />
-          <Route path="/elektrikell/about" element={<About />} /> */}
+          <Route path="/projects" element={<Projects />} />
         </Routes>
       </Content>
       <Footer />

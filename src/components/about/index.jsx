@@ -118,7 +118,7 @@ export default function AboutPage() {
 const Wrapper = styled.div`
   display: flex;
   height: 100%;
-  @media (max-width: 899px) {
+  @media (max-width: 900px) {
     flex-direction: column;
   }
 `;

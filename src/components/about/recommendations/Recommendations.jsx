@@ -138,6 +138,10 @@ const Wrapper = styled.div`
   display: grid;
   padding: 15px;
   grid-template-columns: repeat(2, 1fr);
+  padding-top: 45px;
+  @media (max-width: 1370px) {
+    padding-top: 15px;
+  }
   @media (max-width: 699px) {
     grid-template-columns: 1fr;
   }

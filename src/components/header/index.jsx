@@ -8,7 +8,7 @@ import BurgerButton from './mobileMenu/BurgerButton';
 import MobileNav from './mobileMenu/MobileNav';
 
 export default function Header() {
-  const matches = useMediaQuery('(min-width: 900px)');
+  const matches = useMediaQuery('(min-width: 901px)');
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ export default function Header() {
         <AppBar>
           <LeftBar>
             <LinkTo to="#">kurban_ramazanov</LinkTo>
-            <NavLinkTo to="/home">home.jsx</NavLinkTo>
+            <NavLinkTo to="/">home.jsx</NavLinkTo>
             <NavLinkTo to="/about">about.jsx</NavLinkTo>
             <NavLinkTo to="/projects">projects.jsx</NavLinkTo>
           </LeftBar>
