@@ -7,6 +7,7 @@ import { RxCross2 } from 'react-icons/rx';
 import useMediaQuery from '../../shared/hooks/useMediaQuery';
 import Bio from './bio/Bio';
 import Education from './education/Education';
+import Empty from './empty/Empty';
 import Recommendations from './recommendations/Recommendations';
 
 const tabs = [
@@ -105,6 +106,7 @@ export default function AboutPage() {
             </Tab>
           ))}
         </Header>
+        {activeTab === '' && <Empty />}
         {activeTab === 'bio' && <Bio />}
         {activeTab === 'education' && <Education />}
         {activeTab === 'recommendations' && <Recommendations />}
