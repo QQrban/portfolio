@@ -1,6 +1,8 @@
-import Offcanvas from 'react-bootstrap/Offcanvas';
 import { styled } from 'styled-components';
+
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import { NavLink } from 'react-router-dom';
+
 import BurgerButton from './BurgerButton';
 
 export default function MobileNav({ openMenu, setOpenMenu }) {
@@ -12,9 +14,8 @@ export default function MobileNav({ openMenu, setOpenMenu }) {
         <BurgerButton openMenu={openMenu} setOpenMenu={setOpenMenu} />
         <CanvasBody>
           <MobileMenu>
-            <LinkTo to="/home">Home.jsx</LinkTo>
+            <LinkTo to="/">Home.jsx</LinkTo>
             <LinkTo to="/about">About.jsx</LinkTo>
-            <LinkTo to="/projects">Projects.jsx</LinkTo>
             <LinkTo to="/contact">Contact.jsx</LinkTo>
           </MobileMenu>
         </CanvasBody>

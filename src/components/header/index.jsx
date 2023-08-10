@@ -19,7 +19,6 @@ export default function Header() {
             <LinkTo to="#">kurban_ramazanov</LinkTo>
             <NavLinkTo to="/">home.jsx</NavLinkTo>
             <NavLinkTo to="/about">about.jsx</NavLinkTo>
-            <NavLinkTo to="/projects">projects.jsx</NavLinkTo>
           </LeftBar>
           <NavLinkTo style={{ borderLeft: '1px solid #1e2d3d' }} to="/contact">
             contact.jsx

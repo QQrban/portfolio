@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import AboutPage from './components/about';
+import Contact from './components/contact';
 import Footer from './components/footer';
 import Header from './components/header';
 import HomePage from './components/home';
-import Projects from './components/projects';
 
 export default function App() {
   return (
@@ -17,7 +17,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Content>
       <Footer />

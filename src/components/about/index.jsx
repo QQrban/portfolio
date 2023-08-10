@@ -8,6 +8,7 @@ import useMediaQuery from '../../shared/hooks/useMediaQuery';
 import Bio from './bio/Bio';
 import Education from './education/Education';
 import Empty from './empty/Empty';
+import Projects from './projects/Projects';
 import Recommendations from './recommendations/Recommendations';
 
 const tabs = [
@@ -22,6 +23,10 @@ const tabs = [
   {
     name: 'recommendations',
     color: '#3A49A4',
+  },
+  {
+    name: 'projects',
+    color: '#fac863',
   },
 ];
 
@@ -47,7 +52,7 @@ export default function AboutPage() {
     return 'bio';
   });
 
-  const matches = useMediaQuery('(min-width: 440px)');
+  const matches = useMediaQuery('(min-width: 554px)');
 
   const chooseTab = (name) => {
     setActiveTab(name);
@@ -96,7 +101,7 @@ export default function AboutPage() {
               className={name === activeTab ? 'active' : ''}
               key={name}
             >
-              {!matches && name.length > 9 ? `${name.slice(0, 6)}` : name}{' '}
+              {!matches && name.length > 6 ? `${name.slice(0, 4)}` : name}{' '}
               <Cross
                 onClick={(e) => {
                   e.stopPropagation();
@@ -110,6 +115,7 @@ export default function AboutPage() {
         {activeTab === 'bio' && <Bio />}
         {activeTab === 'education' && <Education />}
         {activeTab === 'recommendations' && <Recommendations />}
+        {activeTab === 'projects' && <Projects />}
       </MiddleBar>
     </Wrapper>
   );
@@ -126,7 +132,7 @@ const Wrapper = styled.div`
 const LeftBar = styled.div`
   border-right: 1px solid #1e2d3d;
   min-width: 274px;
-  @media (max-width: 1000px) {
+  @media (max-width: 1008px) {
     min-width: 235.5px;
   }
   height: 100%;
@@ -135,14 +141,18 @@ const LeftBar = styled.div`
   flex-direction: column;
   gap: 8px;
   @media (max-width: 900px) {
-    height: 40px;
-    gap: 10px;
     flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 90px;
     margin-top: 70px;
     padding: 10px 32px;
     justify-content: space-around;
     border-bottom: 1px solid #1e2d3d;
     border-top: 1px solid #1e2d3d;
+  }
+  @media (max-width: 455px) {
+    justify-content: center;
+    gap: 16px;
   }
 `;
 
