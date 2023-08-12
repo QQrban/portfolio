@@ -6,6 +6,7 @@ import {
   GreenString,
   OrangeString,
   PurpleString,
+  Tag,
   TealString,
   WhiteString,
   YellowString,
@@ -322,8 +323,4 @@ const CodeResultBody = styled.div`
 const EducationInfo = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const Tag = styled.span`
-  color: #ec5f67;
 `;

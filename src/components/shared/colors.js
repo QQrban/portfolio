@@ -27,3 +27,7 @@ export const OrangeString = styled.span`
 export const GreenString = styled.span`
   color: #99c794;
 `;
+
+export const Tag = styled.span`
+  color: #ec5f67;
+`;

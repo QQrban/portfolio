@@ -6,17 +6,7 @@ import bg2 from '../../assets/bgElement2.png';
 import bg from '../../assets/bgElement.png';
 import boltDown from '../../assets/boltDown.svg';
 import boltUp from '../../assets/boltUp.svg';
-import code1 from '../../assets/code1.png';
-import code2 from '../../assets/code2.png';
-import {
-  BlueString,
-  GreenString,
-  OrangeString,
-  PurpleString,
-  TealString,
-  WhiteString,
-  YellowString,
-} from '../shared/colors';
+import { GreenString, OrangeString, WhiteString } from '../shared/colors';
 import { Button } from '../shared/styles';
 
 export default function Contact() {
@@ -39,12 +29,12 @@ export default function Contact() {
   return (
     <Wrapper>
       <img style={bgStyles} src={bg} alt="bg-element" />
-      <img style={bg2Styles} src={bg2} alt="bg-element" />
+      <img style={bgStyles2} src={bg2} alt="bg-element" />
       <h1>
-        <BlueString>
+        <Title>
           I'm Always Open for Collaboration.{' '}
           <OrangeString>Reach Out!</OrangeString>
-        </BlueString>
+        </Title>
       </h1>
       <Container>
         <Form>
@@ -57,6 +47,7 @@ export default function Contact() {
               <WhiteString>fullName:</WhiteString>
             </InputLabel>
             <Input
+              type="text"
               placeholder="Olivia Adamson"
               onChange={getName}
               value={name}
@@ -68,6 +59,7 @@ export default function Contact() {
               <WhiteString>email:</WhiteString>
             </InputLabel>
             <Input
+              type="email"
               placeholder="olivia.adamson@gmail.com"
               onChange={getEmail}
               value={email}
@@ -87,34 +79,69 @@ export default function Contact() {
           </InputContainer>
           <Button type="submit">submitMessage</Button>
         </Form>
+        <Info>
+          <BigText>
+            <GreenString>{'>'} Thank you for visiting my page!</GreenString>
+          </BigText>
+          <span>
+            {'//'} I'm thrilled that you took the time to explore my work.
+          </span>
+          <span>
+            {'//'} As a passionate developer, I'm always on the lookout
+          </span>
+          <span>{'//'} for new challenges and opportunities. </span>
+          <span>
+            {'//'} If you're interested in collaboration, don't hesitate to
+            reach out.
+          </span>
+          <span>
+            {'//'} I'm always eager to explore new opportunities and challenges.
+          </span>
+          <span>
+            {'//'} Your interest means a lot to me, and I look forward
+          </span>
+          <span>{'//'} to connecting with you soon!</span>
+        </Info>
       </Container>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: column;
   padding: 20px;
   @media (max-width: 900px) {
     padding-top: 80px;
   }
 `;
 
+const Title = styled.div`
+  color: #4d5bce;
+`;
+
 const Container = styled.div`
-  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  align-items: center;
+  margin-top: 50px;
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    gap: 50px;
+  }
 `;
 
 const Form = styled.form`
-  padding: 90px;
+  padding: 60px;
   display: flex;
+  flex: 1;
+  position: relative;
+  z-index: 991;
+  order: 2;
   max-width: 650px;
-  height: 650px;
+  max-height: 650px;
   justify-content: center;
   flex-direction: column;
   gap: 22px;
-  margin: 40px auto 0 auto;
   background: linear-gradient(
     154deg,
     rgba(23, 85, 83, 0.7) 0%,
@@ -122,15 +149,26 @@ const Form = styled.form`
   );
   box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.2) inset;
   backdrop-filter: blur(32px);
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
   @media (max-width: 580px) {
-    padding: 45px;
+    padding: 70px 20px;
   }
-  @media (max-width: 450px) {
-    padding: 30px;
+`;
+
+const Info = styled.div`
+  color: #607b96;
+  font-size: 16px;
+  order: 1;
+  position: relative;
+  z-index: 991;
+  @media (max-width: 1169px) {
+    font-size: 14px;
   }
-  @media (max-width: 340px) {
-    padding: 15px;
-  }
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
 `;
 
 const InputContainer = styled.div``;
@@ -163,6 +201,11 @@ const Input = styled.input`
     font-size: 15px;
   }
 `;
+
+const BigText = styled.h3`
+  margin-bottom: 20px;
+  font-size: 32px;
+`;
 const Textarea = styled.textarea`
   ${sharedStyles}
   height: 200px;
@@ -179,16 +222,15 @@ const Textarea = styled.textarea`
 
 const bgStyles = {
   position: 'absolute',
-  opacity: 0.9,
-  left: 0,
-  top: 0,
-};
-
-const bg2Styles = {
-  position: 'absolute',
-  opacity: 0.9,
   right: 0,
-  top: 0,
+  opacity: 0.7,
+  pointerEvents: 'none',
+};
+const bgStyles2 = {
+  position: 'absolute',
+  left: 0,
+  opacity: 0.4,
+  pointerEvents: 'none',
 };
 
 const boltUpStyles = {
