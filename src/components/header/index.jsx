@@ -73,7 +73,7 @@ const LinkTo = styled(Link)`
   border-right: 1px solid #1e2d3d;
   &:first-child {
     padding-right: 88px;
-    @media (max-width: 1000px) {
+    @media (max-width: 1008px) {
       padding-right: 50px;
     }
   }

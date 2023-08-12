@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
-import { BlueString } from '../shared/colors';
-import { Button } from '../shared/components';
+import { BlueString } from '../../shared/colors';
+import { Button } from '../../shared/styles';
 
 export default function ProjectItem({ photo, descr, tools, link, name }) {
   return (

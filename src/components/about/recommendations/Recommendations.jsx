@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 
-import { comments } from '../constants';
 import {
   BlueString,
   GreenString,
@@ -9,7 +8,8 @@ import {
   TealString,
   WhiteString,
   YellowString,
-} from '../shared/colors';
+} from '../../shared/colors';
+import { comments } from '../constants';
 import Comment from './Comment';
 
 export default function Recommendations() {

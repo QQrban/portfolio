@@ -7,6 +7,7 @@ import bg from '../../assets/bgElement.png';
 import boltDown from '../../assets/boltDown.svg';
 import boltUp from '../../assets/boltUp.svg';
 import me from '../../assets/kurban.jpg';
+import { GreenSquare } from '../shared/styles';
 
 export default function HomePage() {
   return (
@@ -31,7 +32,7 @@ export default function HomePage() {
       </LeftBar>
       <img style={bgStyles} src={bg} alt="bg-element" />
       <img style={bg2Styles} src={bg2} alt="bg-element" />
-      <RightBar>
+      <GreenSquare>
         <img style={boltUpLeft} src={boltUp} alt="bolt" />
         <img style={boltUpRight} src={boltUp} alt="bolt" />
         <img style={boltDownLeft} src={boltUp} alt="bolt" />
@@ -41,7 +42,7 @@ export default function HomePage() {
           src={me}
           alt="kurban"
         />
-      </RightBar>
+      </GreenSquare>
     </Wrapper>
   );
 }
@@ -122,26 +123,6 @@ const GithubLinkText = styled.span`
 
 const GithubLink = styled.span`
   color: #e99287;
-`;
-
-const RightBar = styled.div`
-  position: relative;
-  max-width: 650px;
-  @media (max-width: 1385px) {
-    max-width: 500px;
-  }
-  display: flex;
-  justify-content: center;
-  padding: 22px;
-  border-radius: 8px;
-  border: 1px solid #0c1616;
-  background: linear-gradient(
-    154deg,
-    rgba(23, 85, 83, 0.7) 0%,
-    rgba(67, 217, 173, 0.09) 100%
-  );
-  box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.2) inset;
-  backdrop-filter: blur(32px);
 `;
 
 const bgStyles = {

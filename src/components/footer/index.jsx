@@ -3,7 +3,11 @@ import { styled } from 'styled-components';
 import { AiFillFacebook, AiFillGithub } from 'react-icons/ai';
 import { FaTelegramPlane } from 'react-icons/fa';
 
+import useMediaQuery from '../../shared/hooks/useMediaQuery';
+
 export default function Footer() {
+  const matches = useMediaQuery('(min-width: 901px)');
+
   return (
     <AppBar>
       <LeftBar>
@@ -22,7 +26,7 @@ export default function Footer() {
         href="https://github.com/qqrban"
         target="_blank"
       >
-        <span style={{ marginRight: '18px' }}>QQrban</span>
+        {matches ? <span style={{ marginRight: '18px' }}>QQrban</span> : ''}
         <AiFillGithub size={30} />
       </Link>
     </AppBar>

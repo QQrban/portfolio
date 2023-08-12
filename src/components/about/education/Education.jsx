@@ -1,7 +1,6 @@
 import { styled } from 'styled-components';
 
 import useMediaQuery from '../../../shared/hooks/useMediaQuery';
-import { schools } from '../constants';
 import {
   BlueString,
   GreenString,
@@ -10,7 +9,8 @@ import {
   TealString,
   WhiteString,
   YellowString,
-} from '../shared/colors';
+} from '../../shared/colors';
+import { schools } from '../constants';
 
 export default function Education() {
   const matchesAlt = useMediaQuery('(min-width: 395px)');

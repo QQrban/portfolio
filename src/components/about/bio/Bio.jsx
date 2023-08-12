@@ -2,14 +2,14 @@ import { styled } from 'styled-components';
 
 import kurban from '../../../assets/kurban.jpg';
 import useMediaQuery from '../../../shared/hooks/useMediaQuery';
-import { experience, technologies } from '../constants';
 import {
   GreenString,
   OrangeString,
   PurpleString,
   WhiteString,
   YellowString,
-} from '../shared/colors';
+} from '../../shared/colors';
+import { experience, technologies } from '../constants';
 import Technology from './Technology';
 import WorkExperience from './WorkExperience';
 
