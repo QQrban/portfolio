@@ -16,7 +16,7 @@ export default function Header() {
       {matches ? (
         <AppBar>
           <LeftBar>
-            <LinkTo to="#">kurban_ramazanov</LinkTo>
+            <LinkTo to="/">kurban_ramazanov</LinkTo>
             <NavLinkTo to="/">home.jsx</NavLinkTo>
             <NavLinkTo to="/about">about.jsx</NavLinkTo>
           </LeftBar>

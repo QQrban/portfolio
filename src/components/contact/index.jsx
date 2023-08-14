@@ -1,121 +1,181 @@
+import emailjs from '@emailjs/browser';
 import { css, styled } from 'styled-components';
-
+import { MdDone } from 'react-icons/md'
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import bg2 from '../../assets/bgElement2.png';
 import bg from '../../assets/bgElement.png';
 import boltDown from '../../assets/boltDown.svg';
 import boltUp from '../../assets/boltUp.svg';
-import { GreenString, OrangeString, WhiteString } from '../shared/colors';
+import {
+  GreenString,
+  OrangeString,
+  PurpleString,
+  WhiteString,
+} from '../shared/colors';
 import { Button } from '../shared/styles';
 
 export default function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
 
-  const getName = (e) => {
-    setName(e.target.value);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    emailjs
+      .send('service_xglde3p', 'template_9ym63ci', data, '2aKuc3rWl9BduUNyZ')
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        },
+      );
+    setEmailSent(true);
+    reset();
   };
 
-  const getEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const getMessage = (e) => {
-    setMessage(e.target.value);
-  };
-
+  const newMessage = () => {
+    setEmailSent(false)
+  }
   return (
     <Wrapper>
       <img style={bgStyles} src={bg} alt="bg-element" />
       <img style={bgStyles2} src={bg2} alt="bg-element" />
-      <h1>
-        <Title>
-          I'm Always Open for Collaboration.{' '}
-          <OrangeString>Reach Out!</OrangeString>
-        </Title>
-      </h1>
-      <Container>
-        <Form>
-          <img style={boltUpLeft} src={boltUp} alt="bolt" />
-          <img style={boltUpRight} src={boltUp} alt="bolt" />
-          <img style={boltDownLeft} src={boltUp} alt="bolt" />
-          <img style={boltDownRight} src={boltDown} alt="bolt" />
-          <InputContainer>
-            <InputLabel htmlFor="contact-name">
-              <WhiteString>fullName:</WhiteString>
-            </InputLabel>
-            <Input
-              type="text"
-              placeholder="Olivia Adamson"
-              onChange={getName}
-              value={name}
-              id="contact-name"
-            />
-          </InputContainer>
-          <InputContainer>
-            <InputLabel htmlFor="contact-email">
-              <WhiteString>email:</WhiteString>
-            </InputLabel>
-            <Input
-              type="email"
-              placeholder="olivia.adamson@gmail.com"
-              onChange={getEmail}
-              value={email}
-              id="contact-email"
-            />
-          </InputContainer>
-          <InputContainer>
-            <InputLabel htmlFor="contact-message">
-              <WhiteString>message:</WhiteString>
-            </InputLabel>
-            <Textarea
-              placeholder="I recently came across your portfolio website, and I must say, I'm genuinely impressed with your work. The design, creativity, and the details in your projects caught my eye."
-              onChange={getMessage}
-              value={message}
-              id="contact-message"
-            />
-          </InputContainer>
-          <Button type="submit">submitMessage</Button>
-        </Form>
-        <Info>
-          <BigText>
-            <GreenString>{'>'} Thank you for visiting my page!</GreenString>
-          </BigText>
-          <span>
-            {'//'} I'm thrilled that you took the time to explore my work.
-          </span>
-          <span>
-            {'//'} As a passionate developer, I'm always on the lookout
-          </span>
-          <span>{'//'} for new challenges and opportunities. </span>
-          <span>
-            {'//'} If you're interested in collaboration, don't hesitate to
-            reach out.
-          </span>
-          <span>
-            {'//'} I'm always eager to explore new opportunities and challenges.
-          </span>
-          <span>
-            {'//'} Your interest means a lot to me, and I look forward
-          </span>
-          <span>{'//'} to connecting with you soon!</span>
-        </Info>
-      </Container>
+      {emailSent ? (
+        <EmailSent>
+          <MdDone color='#99c794' size={90}/>
+          <PurpleString as="h1">Email sent!</PurpleString>
+          <WhiteString as='h4'>
+            Thank you for your message.
+          </WhiteString>
+          <WhiteString as='h4'>
+            I'll respond to it as soon as I can!
+          </WhiteString>
+          <Button onClick={newMessage}>sendNewMessage</Button>
+        </EmailSent>
+      ) : (
+        <>
+          <h1>
+            <Title>
+              I'm Always Open for Collaboration.{' '}
+              <OrangeString as="div">Reach Out!</OrangeString>
+            </Title>
+          </h1>
+          <Container>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <img style={boltUpLeft} src={boltUp} alt="bolt" />
+              <img style={boltUpRight} src={boltUp} alt="bolt" />
+              <img style={boltDownLeft} src={boltUp} alt="bolt" />
+              <img style={boltDownRight} src={boltDown} alt="bolt" />
+              <InputContainer>
+                <InputLabel htmlFor="contact-name">
+                  <WhiteString>fullName:</WhiteString>
+                </InputLabel>
+                <Input
+                  type="text"
+                  placeholder="Olivia Adamson"
+                  {...register('user_name', { required: true })}
+                  id="contact-name"
+                />
+                {errors.user_name && (
+                  <ErrorMessage>This field is required</ErrorMessage>
+                )}
+              </InputContainer>
+              <InputContainer>
+                <InputLabel htmlFor="contact-email">
+                  <WhiteString>email:</WhiteString>
+                </InputLabel>
+                <Input
+                  type="email"
+                  placeholder="olivia.adamson@gmail.com"
+                  {...register('user_email', {
+                    pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    required: true,
+                  })}
+                  id="contact-email"
+                />
+                {errors.user_email && (
+                  <ErrorMessage>Please enter a valid email</ErrorMessage>
+                )}
+              </InputContainer>
+              <InputContainer>
+                <InputLabel htmlFor="contact-message">
+                  <WhiteString>message:</WhiteString>
+                </InputLabel>
+                <Textarea
+                  placeholder="I recently came across your portfolio website, and I must say, I'm genuinely impressed with your work. The design, creativity, and the details in your projects caught my eye."
+                  {...register('message', { required: true })}
+                  id="contact-message"
+                />
+                {errors.message && (
+                  <ErrorMessage>This field is required</ErrorMessage>
+                )}
+              </InputContainer>
+              <Button type="submit">submitMessage</Button>
+            </Form>
+            <Info>
+              <BigText>
+                <GreenString>{'>'} Thank you for visiting my page!</GreenString>
+              </BigText>
+              <span>
+                {'//'} I'm thrilled that you took the time to explore my work.
+              </span>
+              <span>
+                {'//'} As a passionate developer, I'm always on the lookout
+              </span>
+              <span>{'//'} for new challenges and opportunities. </span>
+              <span>
+                {'//'} If you're interested in collaboration, don't hesitate to
+                reach out.
+              </span>
+              <span>
+                {'//'} I'm always eager to explore new opportunities and
+                challenges.
+              </span>
+              <span>
+                {'//'} Your interest means a lot to me, and I look forward
+              </span>
+              <span>{'//'} to connecting with you soon!</span>
+            </Info>
+          </Container>
+        </>
+      )}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   padding: 20px;
+  width: 100%;
+  height: 100%;
   @media (max-width: 900px) {
     padding-top: 80px;
   }
 `;
 
+const EmailSent = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Title = styled.div`
   color: #4d5bce;
+  padding-left: 50px;
+  @media (max-width: 487px) {
+    text-align: center;
+    padding: 0;
+  }
 `;
 
 const Container = styled.div`
@@ -123,7 +183,7 @@ const Container = styled.div`
   justify-content: space-evenly;
   gap: 20px;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 30px;
   @media (max-width: 1200px) {
     flex-direction: column;
     gap: 50px;
@@ -154,6 +214,7 @@ const Form = styled.form`
   }
   @media (max-width: 580px) {
     padding: 70px 20px;
+    gap: 5px;
   }
 `;
 
@@ -200,6 +261,9 @@ const Input = styled.input`
   @media (max-width: 450px) {
     font-size: 15px;
   }
+  &::placeholder{
+    opacity: 0.5
+  }
 `;
 
 const BigText = styled.h3`
@@ -218,6 +282,14 @@ const Textarea = styled.textarea`
     font-size: 15px;
     line-height: 20px;
   }
+  &::placeholder{
+    opacity: 0.5
+  }
+`;
+
+const ErrorMessage = styled.span`
+  color: #e99287;
+  font-size: 14px;
 `;
 
 const bgStyles = {

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 import { AiFillFacebook, AiFillGithub } from 'react-icons/ai';
-import { FaTelegramPlane } from 'react-icons/fa';
+import { BiLogoGmail } from 'react-icons/bi';
 
 import useMediaQuery from '../../shared/hooks/useMediaQuery';
 
@@ -12,13 +12,16 @@ export default function Footer() {
     <AppBar>
       <LeftBar>
         <Link href="/">
-          Find me<StyledSuffix> In</StyledSuffix>:
+          Write me<StyledSuffix> In</StyledSuffix>:
         </Link>
-        <Link href="/">
+        <Link
+          target="_blank"
+          href="https://www.facebook.com/profile.php?id=100006241362203"
+        >
           <AiFillFacebook size={30} />
         </Link>
-        <Link href="/">
-          <FaTelegramPlane size={30} />
+        <Link href="mailto:kurban.ramazanovv@gmail.com">
+          <BiLogoGmail size={30} />
         </Link>
       </LeftBar>
       <Link
