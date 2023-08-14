@@ -79,13 +79,13 @@ export const comments = {
     },
     roman: {
         name: 'Roman Kutselepa',
-        role: 'Fullstack Developer.',
+        role: 'Fullstack Developer',
         comment: `He is a good and passionate person with a creative eye for design and a strong foundation in HTML, CSS, and JavaScript. I see Kurban as an always seeking new challenges and opportunities to grow as a frontend developer`,
         photo: roman,
     },
     rasim: {
         name: 'Rasim Mehtijev',
-        role: 'Senior Frontend Developer.',
+        role: 'Senior Frontend Developer',
         comment: `As a junior developer, your performance has exceeded expectations. Your ability to quickly learn new technologies and apply them to the projects you are working on is impressive. Your attention to detail and commitment to writing clean, efficient code has not gone unnoticed. Your communication skills and willingness to collaborate with other team members have also been a valuable asset. Keep up the great work, and we look forward to seeing your continued growth and success as a developer.`,
         photo: rasim,
     }

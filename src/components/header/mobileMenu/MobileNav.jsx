@@ -14,9 +14,15 @@ export default function MobileNav({ openMenu, setOpenMenu }) {
         <BurgerButton openMenu={openMenu} setOpenMenu={setOpenMenu} />
         <CanvasBody>
           <MobileMenu>
-            <LinkTo to="/">Home.jsx</LinkTo>
-            <LinkTo to="/about">About.jsx</LinkTo>
-            <LinkTo to="/contact">Contact.jsx</LinkTo>
+            <LinkTo onClick={handleClose} to="/">
+              Home.jsx
+            </LinkTo>
+            <LinkTo onClick={handleClose} to="/about">
+              About.jsx
+            </LinkTo>
+            <LinkTo onClick={handleClose} to="/contact">
+              Contact.jsx
+            </LinkTo>
           </MobileMenu>
         </CanvasBody>
       </OffCanvas>

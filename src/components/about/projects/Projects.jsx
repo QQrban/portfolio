@@ -70,10 +70,16 @@ const ProjectsFooter = styled.div`
   padding: 20px 20px 0 0;
   color: #99c794;
   text-align: right;
+  @media (max-width: 734px) {
+    margin-top: 10px;
+  }
 `;
 
 const Arrow = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 20px 20px 10px 0;
+  @media (max-width: 900px) {
+    padding: 20px 13px 10px 0;
+  }
 `;

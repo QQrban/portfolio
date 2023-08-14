@@ -1,8 +1,9 @@
 import emailjs from '@emailjs/browser';
 import { css, styled } from 'styled-components';
-import { MdDone } from 'react-icons/md'
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { MdDone } from 'react-icons/md';
 
 import bg2 from '../../assets/bgElement2.png';
 import bg from '../../assets/bgElement.png';
@@ -42,22 +43,22 @@ export default function Contact() {
   };
 
   const newMessage = () => {
-    setEmailSent(false)
-  }
+    setEmailSent(false);
+  };
   return (
     <Wrapper>
       <img style={bgStyles} src={bg} alt="bg-element" />
       <img style={bgStyles2} src={bg2} alt="bg-element" />
       {emailSent ? (
         <EmailSent>
-          <MdDone color='#99c794' size={90}/>
+          <MdDone color="#99c794" size={90} />
           <PurpleString as="h1">Email sent!</PurpleString>
-          <WhiteString as='h4'>
-            Thank you for your message.
-          </WhiteString>
-          <WhiteString as='h4'>
-            I'll respond to it as soon as I can!
-          </WhiteString>
+          <div>
+            <WhiteString as="h4">Thank you for your message.</WhiteString>
+            <WhiteString as="h4">
+              I'll respond to it as soon as I can!
+            </WhiteString>
+          </div>
           <Button onClick={newMessage}>sendNewMessage</Button>
         </EmailSent>
       ) : (
@@ -167,6 +168,10 @@ const EmailSent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media (max-width: 600px) {
+    gap: 22px;
+    text-align: center;
+  }
 `;
 
 const Title = styled.div`
@@ -261,8 +266,8 @@ const Input = styled.input`
   @media (max-width: 450px) {
     font-size: 15px;
   }
-  &::placeholder{
-    opacity: 0.5
+  &::placeholder {
+    opacity: 0.5;
   }
 `;
 
@@ -282,8 +287,8 @@ const Textarea = styled.textarea`
     font-size: 15px;
     line-height: 20px;
   }
-  &::placeholder{
-    opacity: 0.5
+  &::placeholder {
+    opacity: 0.5;
   }
 `;
 
