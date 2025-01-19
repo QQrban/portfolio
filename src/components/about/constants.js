@@ -8,8 +8,18 @@ import roman from '../../assets/roman.png'
 import news from '../../assets/news.png'
 import shop from '../../assets/electron.png'
 import kell from '../../assets/elektrikell.png'
+import taltech from '../../assets/taltech.png'
 
 export const schools = [
+    {
+        alt: 'kood/Jõhvi logo',
+        url: 'https://imgonetwothree.com/gallery/company-logo_100_100/16408?',
+        photo: taltech,
+        name: 'Taltech',
+        location: 'Tallinn, Estonia',
+        spec: 'IT Systems Development',
+        dates: '2024-2027',
+    },
     {
         alt: 'kood/Jõhvi logo',
         url: 'https://imgonetwothree.com/gallery/company-logo_100_100/16408?',

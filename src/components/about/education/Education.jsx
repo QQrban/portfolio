@@ -225,7 +225,7 @@ export default function Education() {
           <hr />
           {schools.map((school) => (
             <CodeResultBody key={school.name}>
-              <img src={school.photo} alt="logo" />
+              <img style={{width: '100px'}} src={school.photo} alt="logo" />
               <EducationInfo>
                 <div>{school.name}</div>
                 <div>{school.location}</div>
